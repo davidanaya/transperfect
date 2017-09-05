@@ -1,19 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'tp-issue',
   template: `
-    <p>
-      issue Works!
-    </p>
+    <pre>{{ issue | json }}</pre>
   `,
   styleUrls: ['./issue.component.scss']
 })
 export class IssueComponent implements OnInit {
+  @Input() issue: any;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
