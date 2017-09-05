@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-dashboard',
+  selector: 'tp-issue',
   template: `
     <p>
-      dashboard
+      issue Works!
     </p>
   `,
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./issue.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class IssueComponent implements OnInit {
 
   constructor() { }
 

@@ -6,12 +6,10 @@ import { MaterialModule } from '@angular/material';
 
 // modules
 import { AppRoutingModule } from './app-routing.module';
-import { PerformanceModule } from 'app/performance/performance.module';
 
 // components
 import { AppComponent } from './app.component';
 import { HomeComponent } from 'app/components/home/home.component';
-
 
 @NgModule({
   declarations: [
@@ -23,7 +21,6 @@ import { HomeComponent } from 'app/components/home/home.component';
     HttpModule,
     MaterialModule,
     AppRoutingModule,
-    PerformanceModule
   ],
   providers: [],
   bootstrap: [AppComponent]
