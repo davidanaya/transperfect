@@ -9,9 +9,7 @@ import { IssuesService } from './issues.service';
 import { ISSUES } from './issues.mock';
 
 function createResponse(body) {
-  return Observable.of(
-    new Response(new ResponseOptions({ body: JSON.stringify(body) }))
-  );
+  return Observable.of(body);
 }
 
 class MockHttp {

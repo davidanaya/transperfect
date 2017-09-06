@@ -15,7 +15,7 @@ import { ISSUES } from './issues.mock';
 export class IssuesService {
   issues$ = this.http
     .get<any>(`${environment.api}/issues`)
-    .map(res => res.json())
+    // .map(res => res.json())
     .map(issues => issues.map(issue => this.issueToViewModel(issue)));
 
   // issues$ = Observable.of(ISSUES).map(issues => issues.map(issue => this.issueToViewModel(issue)));
@@ -25,7 +25,7 @@ export class IssuesService {
   getIssue(id: number): Observable<IssueDetail> {
     return this.http
       .get<any>(`${environment.api}/issues/${id}`)
-      .map(res => res.json())
+      // .map(res => res.json())
       .map(issue => this.issueToViewModelDetail(issue));
   }
 
