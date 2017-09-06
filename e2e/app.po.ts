@@ -1,11 +1,11 @@
 import { browser, by, element } from 'protractor';
 
-export class MyAngularCliSeedPage {
+export class TransperfectPage {
   navigateTo() {
     return browser.get('/');
   }
 
   getParagraphText() {
-    return element(by.css('app-root h1')).getText();
+    return element(by.css('nav')).getText();
   }
 }
