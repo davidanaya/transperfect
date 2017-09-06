@@ -7,11 +7,15 @@ import { environment } from '../../../environments/environment';
 
 import { IssueDetail } from '../models/issue-detail.model';
 import { Issue } from '../models/issue.model';
+import { ISSUES } from './issues.mock';
 
 @Injectable()
 export class IssuesService {
-  issues$ = this.http
-    .get<any>(`${environment.api}/issues`)
+  // issues$ = this.http
+  //   .get<any>(`${environment.api}/issues`)
+  //   .map(issues => issues.map(issue => this.issueToViewModel(issue)));
+
+  issues$ = Observable.of(ISSUES)
     .map(issues => issues.map(issue => this.issueToViewModel(issue)));
 
   constructor(private http: HttpClient) {}
