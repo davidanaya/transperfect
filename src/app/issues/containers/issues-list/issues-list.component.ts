@@ -61,7 +61,9 @@ export class IssuesListComponent implements OnInit {
     this.users$ = this.issues$
       .map(issues => issues.map(issue => issue.user))
       .map(users =>
-        users.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()))
+        users
+          .sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()))
+          .filter((user, index, array) => !index || user !== array[index - 1])
       );
   }
 
