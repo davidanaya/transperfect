@@ -13,18 +13,19 @@ import { ISSUES } from './issues.mock';
 
 @Injectable()
 export class IssuesService {
-  // issues$ = this.http
-  //   .get<any>(`${environment.api}/issues`)
-  //   .map(issues => issues.map(issue => this.issueToViewModel(issue)));
-
-  issues$ = Observable.of(ISSUES)
+  issues$ = this.http
+    .get<any>(`${environment.api}/issues`)
+    .map(res => res.json())
     .map(issues => issues.map(issue => this.issueToViewModel(issue)));
+
+  // issues$ = Observable.of(ISSUES).map(issues => issues.map(issue => this.issueToViewModel(issue)));
 
   constructor(private http: HttpClient) {}
 
   getIssue(id: number): Observable<IssueDetail> {
     return this.http
       .get<any>(`${environment.api}/issues/${id}`)
+      .map(res => res.json())
       .map(issue => this.issueToViewModelDetail(issue));
   }
 
