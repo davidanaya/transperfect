@@ -1776,3 +1776,24 @@ export const ISSUES = [
       '<!--\r\nPLEASE HELP US PROCESS GITHUB ISSUES FASTER BY PROVIDING THE FOLLOWING INFORMATION.\r\n\r\nISSUES MISSING IMPORTANT INFORMATION MAY BE CLOSED WITHOUT INVESTIGATION.\r\n-->\r\n\r\n## I\'m submitting a...\r\n<!-- Check one of the following options with "x" -->\r\n<pre><code>\r\n[x] Regression (a behavior that used to work and stopped working in a new release)\r\n</code></pre>\r\n\r\n## Current behavior\r\n<!-- Describe how the issue manifests. -->\r\nI\'m using TypeScript `paths` to define a sub-module in my repo:\r\n```json\r\n{\r\n    "compilerOptions": {\r\n        "baseUrl": ".",\r\n        "rootDir": ".",\r\n        "paths": {\r\n            "@my-org/my-sub-module": [\r\n                "./src/my-sub-module/public_api.ts"\r\n            ]\r\n        }\r\n    }\r\n}\r\n```\r\n\r\nThen in a `.ts` file I use the import:\r\n```typescript\r\nimport {some_class} from \'@my-org/my-sub-module\';\r\n```\r\n\r\nWhen I compile using NGC it resolves the imports correctly, but sometimes replaces it with relative path in the output files:\r\n```javascript\r\nimport { some_class } from "./../my-sub-module/public_api";\r\n```\r\n\r\nThis is fine for base usage, but once I try to use rollup to bundle packages based on the `paths` it will try to include files that do not belong to my sub-module. The roots in `paths` are passed into `external` option of rollup. But these do not match the rewritten paths anymore...\r\n\r\nThe code was working fine in Angular **4.3.x.**\r\n\r\n## Expected behavior\r\nThe imports are never replaced with relative paths. \r\n\r\n## Minimal reproduction of the problem with instructions\r\nCan\'t find any pattern for which the imports are modified. It seems to be that they are changed once the relative path is shorter then the name in `paths`(?)...\r\n\r\n## Environment\r\n<pre><code>Angular version: 5.0.0-beta.6\r\nTypeScript: 2.3.4\r\n</code></pre>\r\n'
   }
 ];
+
+export const ISSUES_VM = [
+  {
+    url: 'https://api.github.com/repos/angular/angular/issues/19065',
+    id: 255487996,
+    number: 19065,
+    title: 'chore(upgrade): remove code setting id attribute.',
+    user: 'rkirov',
+    state: 'open',
+    created_at: '2017-09-06T05:46:53Z'
+  },
+  {
+    url: 'https://api.github.com/repos/angular/angular/issues/19064',
+    id: 255478884,
+    number: 19064,
+    title: 'docs(aio): change Stack Overflow link',
+    user: 'sarunint',
+    state: 'open',
+    created_at: '2017-09-06T04:42:47Z'
+  }
+];

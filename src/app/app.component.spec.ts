@@ -1,10 +1,15 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { NO_ERRORS_SCHEMA, DebugElement } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { By } from '@angular/platform-browser';
 
 describe('AppComponent', () => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+  let el: DebugElement;
+
   beforeEach(
     async(() => {
       TestBed.configureTestingModule({
@@ -15,33 +20,19 @@ describe('AppComponent', () => {
     })
   );
 
-  it(
-    'should create the app',
-    async(() => {
-      const fixture = TestBed.createComponent(AppComponent);
-      const app = fixture.debugElement.componentInstance;
-      expect(app).toBeTruthy();
-    })
-  );
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    el = fixture.debugElement;
 
-  it(
-    `should have as title 'my-angular-cli-seed'`,
-    async(() => {
-      const fixture = TestBed.createComponent(AppComponent);
-      const app = fixture.debugElement.componentInstance;
-      expect(app.title).toEqual('my-angular-cli-seed');
-    })
-  );
+    fixture.detectChanges();
+  });
 
-  it(
-    'should render title in a h1 tag',
-    async(() => {
-      const fixture = TestBed.createComponent(AppComponent);
-      fixture.detectChanges();
-      const compiled = fixture.debugElement.nativeElement;
-      expect(compiled.querySelector('h1').textContent).toContain(
-        'Welcome to my-angular-cli-seed!!'
-      );
-    })
-  );
+  it('should create the app', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should have a nav tag with 2 links', () => {
+    expect(el.query(By.css('nav')).children.length).toEqual(2);
+  });
 });
